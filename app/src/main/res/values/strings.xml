@@ -2,4 +2,8 @@
     <string name="app_name">BullyingSecretAlert</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_main">BSA</string>
+
+    <string name="login">Si tienes una cuenta? Inicia Sesión</string>
+    <string name="register">Si no tienes una cuenta? Registrate</string>
+    <string name="forgot">Olvidaste tu contraseña?</string>
 </resources>
