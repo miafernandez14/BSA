@@ -9,13 +9,13 @@ class SharedPreferenceUtil {
     companion object{
         private const val SHARED_PREFERENCE_KEY = "SHARED_PREFERENCE_KEY"
 
-        private lateinit var sharedPreferences: SharedPreferences
+        private lateinit var sharedPreference: SharedPreferences
 
         private const val USER= "USER_KEY"
     }
 
     fun setSharedPreference(context: Context) {
-        sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCE_KEY, Context.MODE_PRIVATE)
+        sharedPreference = context.getSharedPreferences(SHARED_PREFERENCE_KEY, Context.MODE_PRIVATE)
     }
 
     fun saveUser(user: User){
@@ -23,7 +23,7 @@ class SharedPreferenceUtil {
 
         val jsonUser = gson.toJson(user)
 
-        sharedPreferences
+        sharedPreference
             .edit()
             .putString(USER, jsonUser)
             .apply()
@@ -34,7 +34,7 @@ class SharedPreferenceUtil {
 
         var user: User? = null
 
-        val jsonUser = sharedPreferences.getString(USER,"")
+        val jsonUser = sharedPreference.getString(USER,"")
 
         user= gson.fromJson(jsonUser, User::class.java)
 

@@ -13,25 +13,30 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         sharedPreferenceUtil = SharedPreferenceUtil().also {
             it.setSharedPreference(this)
         }
-        binding.btnLogin.setOnClickListener {
+        binding.btnLogin2.setOnClickListener {
             startLogin()
-        }
-    }
-
-    fun startLogin() {
-        val username = binding.username.text.toString()
-        val password = binding.password.text.toString()
-
-        val user: User? = sharedPreferenceUtil.getUser()
-
-        if (username == user?.username && password == user?.password) {
-            startActivity(Intent(this, MainActivity::class.java))
-        } else {
-            Toast.makeText(this, "Error usuario", Toast.LENGTH_SHORT)
         }
     }
 
     fun register(view: View) {
         startActivity(Intent(this,RegisterActivity::class.java))
     }
+
+    fun startLogin() {
+
+        val username = binding.username.text.toString()
+        val password = binding.password.text.toString()
+
+        val user: User? = sharedPreferenceUtil.getUser()
+
+        if (username == user?.username && password == user.password) {
+
+            startActivity(Intent(this, MainActivity::class.java))
+
+        } else {
+
+            Toast.makeText(this, "Error usuario", Toast.LENGTH_SHORT)
+        }
+    }
+
 }

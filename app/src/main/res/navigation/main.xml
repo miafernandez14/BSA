@@ -20,7 +20,7 @@
         android:label="activity_inicial"
         tools:layout="@layout/activity_inicial" >
         <action
-            android:id="@+id/action_inicialFragment_to_loginFragment"
+            android:id="@+id/action_inicialActivity_to_loginActivity"
             app:destination="@id/loginActivity" />
         <action
             android:id="@+id/action_inicialActivity_to_registerActivity"
@@ -30,10 +30,20 @@
         android:id="@+id/loginActivity"
         android:name="com.fernandez.mia.bullyingsecretalert.LoginActivity"
         android:label="activity_login"
-        tools:layout="@layout/activity_login" />
+        tools:layout="@layout/activity_login">
+        <action
+        android:id="@+id/action_loginActivity_to_mainActivity"
+        app:destination="@id/mainActivity" />
+    </fragment>
     <fragment
         android:id="@+id/registerActivity"
         android:name="com.fernandez.mia.bullyingsecretalert.RegisterActivity"
         android:label="activity_register"
         tools:layout="@layout/activity_register" />
+    <fragment
+        android:id="@+id/mainActivity"
+        android:name="com.fernandez.mia.bullyingsecretalert.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+
 </navigation>

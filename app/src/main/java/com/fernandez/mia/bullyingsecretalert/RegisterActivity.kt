@@ -14,21 +14,21 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(ActivityRegisterB
         }
         binding.btnRegister.setOnClickListener {
             val userId = "1"
-            val name = binding.name.text.toString()
-            val last_name = binding.lastname.text.toString()
-            val email = binding.email.text.toString()
-            val sexo = binding.sexo.text.toString()
-            val username = binding.username.toString()
-            val password = binding.password.toString()
+            val sname = binding.name.text.toString()
+            val slast_name = binding.lastname.text.toString()
+            val semail = binding.email.text.toString()
+            val ssexo = binding.sexo.text.toString()
+            val susername = binding.username.toString()
+            val spassword = binding.password.toString()
 
             val user=User(
                 userId,
-                name,
-                last_name,
-                email,
-                sexo,
-                username,
-                password
+                sname,
+                slast_name,
+                semail,
+                ssexo,
+                susername,
+                spassword
             )
             sharedPreferenceUtil.saveUser(user)
 
