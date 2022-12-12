@@ -2,7 +2,6 @@ package com.fernandez.mia.bullyingsecretalert
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import com.fernandez.mia.bullyingsecretalert.databinding.ActivityLoginBinding
 
@@ -18,11 +17,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         }
     }
 
-    fun register(view: View) {
-        startActivity(Intent(this,RegisterActivity::class.java))
-    }
 
-    fun startLogin() {
+    private fun startLogin() {
 
         val username = binding.username.text.toString()
         val password = binding.password.text.toString()
@@ -30,12 +26,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         val user: User? = sharedPreferenceUtil.getUser()
 
         if (username == user?.username && password == user.password) {
-
             startActivity(Intent(this, MainActivity::class.java))
 
         } else {
 
-            Toast.makeText(this, "Error usuario", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "Error usuario", Toast.LENGTH_SHORT).show()
         }
     }
 

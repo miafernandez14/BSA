@@ -36,7 +36,7 @@ class SharedPreferenceUtil {
 
         val jsonUser = sharedPreference.getString(USER,"")
 
-        user= gson.fromJson(jsonUser, User::class.java)
+        user = gson.fromJson(jsonUser, User::class.java)
 
         return user
     }

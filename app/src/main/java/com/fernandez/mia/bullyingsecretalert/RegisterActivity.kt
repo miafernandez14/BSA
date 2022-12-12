@@ -7,15 +7,18 @@ import com.fernandez.mia.bullyingsecretalert.databinding.ActivityRegisterBinding
 
 class RegisterActivity : BaseActivity<ActivityRegisterBinding>(ActivityRegisterBinding::inflate) {
     private lateinit var sharedPreferenceUtil: SharedPreferenceUtil
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState);
+
+        super.onCreate(savedInstanceState)
+
         sharedPreferenceUtil = SharedPreferenceUtil().also {
             it.setSharedPreference(this)
         }
         binding.btnRegister.setOnClickListener {
             val userId = "1"
             val sname = binding.name.text.toString()
-            val slast_name = binding.lastname.text.toString()
+            val lastname = binding.lastname.text.toString()
             val semail = binding.email.text.toString()
             val ssexo = binding.sexo.text.toString()
             val susername = binding.username.toString()
@@ -24,7 +27,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(ActivityRegisterB
             val user=User(
                 userId,
                 sname,
-                slast_name,
+                lastname,
                 semail,
                 ssexo,
                 susername,
@@ -36,7 +39,6 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(ActivityRegisterB
         }
     }
 
-    fun login(view: View) {
-        startActivity(Intent(this,LoginActivity::class.java))
-    }
+    fun login(view: View) {}
+
 }
