@@ -39,7 +39,11 @@
         android:id="@+id/registerActivity"
         android:name="com.fernandez.mia.bullyingsecretalert.RegisterActivity"
         android:label="activity_register"
-        tools:layout="@layout/activity_register" />
+        tools:layout="@layout/activity_register">
+        <action
+            android:id="@+id/action_registerActivity_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
     <fragment
         android:id="@+id/mainActivity"
         android:name="com.fernandez.mia.bullyingsecretalert.MainActivity"
