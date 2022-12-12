@@ -6,32 +6,40 @@ import android.widget.Toast
 import com.fernandez.mia.bullyingsecretalert.databinding.ActivityLoginBinding
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
-    private lateinit var sharedPreferenceUtil: SharedPreferenceUtil
+
+    private lateinit var loginViewModel: LoginViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPreferenceUtil = SharedPreferenceUtil().also {
-            it.setSharedPreference(this)
-        }
-        binding.btnLogin2.setOnClickListener {
+
+        loginViewModel = LoginViewModel(this)
+
+        binding.btnLogin.setOnClickListener {
             startLogin()
+        }
+
+        binding.btnRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
+
+        loginViewModel.emptyFieldsError.observe(this){
+            Toast.makeText(this, "Ingrese los datos del usuario", Toast.LENGTH_SHORT).show()
+        }
+
+        loginViewModel.fieldsAuthenticateError.observe(this){
+            Toast.makeText(this, "Error usuario", Toast.LENGTH_SHORT).show()
+        }
+
+        loginViewModel.goSuccessActivity.observe(this){
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
-
-    private fun startLogin() {
-
-        val username = binding.username.text.toString()
-        val password = binding.password.text.toString()
-
-        val user: User? = sharedPreferenceUtil.getUser()
-
-        if (username == user?.username && password == user.password) {
-            startActivity(Intent(this, MainActivity::class.java))
-
-        } else {
-
-            Toast.makeText(this, "Error usuario", Toast.LENGTH_SHORT).show()
-        }
+    fun startLogin() {
+        loginViewModel.validateInputs(
+            binding.username.text.toString(),
+            binding.password.text.toString()
+        )
     }
 
 }

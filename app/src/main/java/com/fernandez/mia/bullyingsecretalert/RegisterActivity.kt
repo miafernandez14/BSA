@@ -3,42 +3,43 @@ package com.fernandez.mia.bullyingsecretalert
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.fernandez.mia.bullyingsecretalert.databinding.ActivityRegisterBinding
 
 class RegisterActivity : BaseActivity<ActivityRegisterBinding>(ActivityRegisterBinding::inflate) {
-    private lateinit var sharedPreferenceUtil: SharedPreferenceUtil
+    private lateinit var registerViewModel: RegisterViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
 
-        sharedPreferenceUtil = SharedPreferenceUtil().also {
-            it.setSharedPreference(this)
+        registerViewModel = RegisterViewModel(this)
+
+        registerViewModel.emptyFieldsError.observe(this){
+            Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show()
         }
-        binding.btnRegister.setOnClickListener {
-            val userId = "1"
-            val sname = binding.name.text.toString()
-            val lastname = binding.lastname.text.toString()
-            val semail = binding.email.text.toString()
-            val ssexo = binding.sexo.text.toString()
-            val susername = binding.username.toString()
-            val spassword = binding.password.toString()
 
-            val user=User(
-                userId,
-                sname,
-                lastname,
-                semail,
-                ssexo,
-                susername,
-                spassword
+        registerViewModel.userExist.observe(this){
+            Toast.makeText(this, "Usuario ya registrado", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.btnRegister2.setOnClickListener{
+            registerViewModel.saveUser(
+                "",
+                binding.Name.text.toString(),
+                binding.Lastname.text.toString(),
+                binding.Email.text.toString(),
+                binding.Sex.text.toString(),
+                binding.Username.text.toString(),
+                binding.Password.text.toString()
             )
-            sharedPreferenceUtil.saveUser(user)
+        }
 
-            startActivity(Intent(this,LoginActivity::class.java))
+        registerViewModel.goRegisterActivity.observe(this){
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+
+        binding.btnLogin2.setOnClickListener{
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
-
-    fun login(view: View) {}
-
 }

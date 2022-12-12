@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
+        android:textSize="20sp"
         android:textColor="@color/white"
         android:text="Iniciar Sesión"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,10 +26,10 @@
         android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
         android:text="Bienvenid@!"
         android:textStyle="bold"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.138"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -37,7 +38,7 @@
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="110dp"
         android:layout_marginHorizontal="20sp"
         android:ems="10"
         android:inputType="textEmailAddress"
@@ -54,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="34dp"
         android:textColorHint="@color/white"
         android:hint="Contraseña"
         android:textColor="@color/white"
@@ -66,43 +67,32 @@
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <Button
-        android:id="@+id/btnLogin2"
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16sp"
+        android:layout_marginBottom="15dp"
         app:cornerRadius="20sp"
         android:layout_marginTop="56dp"
         android:text="Iniciar sesion"
         android:textColor="@color/color_main"
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister" />
 
-    <TextView
-        android:id="@+id/forgot"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/forgot"
-        android:textColor="@color/white"
+        android:layout_marginHorizontal="16sp"
+        android:layout_marginBottom="20dp"
+        app:cornerRadius="20sp"
+        android:text="Registrarse"
+        android:textColor="@color/color_main"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin2" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    <TextView
-        android:id="@+id/textRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
-        android:text="@string/register"
-        android:onClick="register"
-        android:textColor="@color/sky"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgot" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
