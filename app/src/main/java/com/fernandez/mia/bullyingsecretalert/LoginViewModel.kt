@@ -17,14 +17,14 @@ class LoginViewModel (private val  context: Context): ViewModel() {
         }
     }
 
-    fun validateInputs(email: String, password: String) {
-        if (email.isEmpty() && password.isEmpty()) {
+    fun validateInputs(username: String, password: String) {
+        if (username.isEmpty() && password.isEmpty()) {
             emptyFieldsError.postValue(true)
         }
 
         val user: User? = sharedPreferenceUtil.getUser()
 
-        if (email == user?.email && password == user?.password) {
+        if (username == user?.username && password == user?.password) {
             goSuccessActivity.postValue(true)
         } else {
             fieldsAuthenticateError.postValue(true)

@@ -26,7 +26,6 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(ActivityRegisterB
             registerViewModel.saveUser(
                 "",
                 binding.Name.text.toString(),
-                binding.Lastname.text.toString(),
                 binding.Email.text.toString(),
                 binding.Sex.text.toString(),
                 binding.Username.text.toString(),

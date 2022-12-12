@@ -17,11 +17,10 @@ class RegisterViewModel (private val context: Context): ViewModel(){
         }
     }
 
-    fun saveUser(userId: String, name: String , lastName: String, email: String, sex: String, userName: String, password: String) {
+    fun saveUser(userId: String, name: String , email: String, sex: String, userName: String, password: String) {
         val user = User(
             userId,
             name,
-            lastName,
             email,
             sex,
             userName,
@@ -32,7 +31,7 @@ class RegisterViewModel (private val context: Context): ViewModel(){
 
         if (userName.isEmpty() || email.isEmpty() || password.isEmpty()) {
             emptyFieldsError.postValue(true)
-        } else if (userName == user2?.name && email == user2?.email && password == user2?.password){
+        } else if (userName == user2?.username && password == user2?.password){
             userExist.postValue(true)
         } else {
             sharedPreferenceUtil.saveUser(user)
